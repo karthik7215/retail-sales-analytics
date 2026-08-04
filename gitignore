@@ -1,0 +1,13 @@
+# Exclude large data files (exceed GitHub's 25MB limit)
+data/online_retail_raw.csv
+data/online_retail_cleaned.csv
+data/online_retail_cancellations.csv
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

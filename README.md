@@ -15,10 +15,14 @@ significant cleaning before it could be trusted.
 
 ## 🗂️ Dataset
 
-- **Source:** UCI Online Retail Dataset (publicly available)
+- **Source:** [UCI Online Retail Dataset](https://archive.ics.uci.edu/dataset/352/online+retail) — publicly available
 - **Period:** December 2010 – December 2011
 - **Size:** 541,909 rows × 8 columns
 - **Content:** Invoices, products, quantities, prices, customers, countries
+
+> **Note:** The raw and cleaned CSV files are not included in this repository as they exceed GitHub's 25MB file limit.
+> Download the original dataset directly from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/352/online+retail),
+> then run `python/clean_data.py` to reproduce the cleaned version (524,878 rows) locally.
 
 ### Raw Data Issues Found
 
@@ -40,7 +44,7 @@ significant cleaning before it could be trusted.
 | **Python (pandas)** | Data cleaning and transformation |
 | **SQL (SQLite)** | KPI queries and business metric extraction |
 | **Excel** | Pivot table cross-validation of key metrics |
-| **Power BI / Tableau** | Interactive dashboard |
+| **Power BI** | Interactive dashboard |
 
 ---
 
@@ -48,11 +52,6 @@ significant cleaning before it could be trusted.
 
 ```
 sales-analytics-project/
-│
-├── data/
-│   ├── online_retail_raw.csv               ← original messy dataset
-│   ├── online_retail_cleaned.csv           ← cleaned sales data (524,878 rows)
-│   └── online_retail_cancellations.csv     ← separated cancellations (9,251 rows)
 │
 ├── python/
 │   └── clean_data.py                       ← cleaning script with documented decisions
@@ -63,8 +62,12 @@ sales-analytics-project/
 ├── powerbi/
 │   └── dashboard.pbix                      ← interactive Power BI dashboard
 │
+├── .gitignore                              ← excludes large CSV files
 └── README.md
 ```
+
+> **data/ folder is excluded via .gitignore** — CSV files exceed GitHub's 25MB limit.
+> Download the dataset from UCI and run `clean_data.py` to reproduce them locally.
 
 ---
 
@@ -81,11 +84,11 @@ sales-analytics-project/
 ## 📊 Dashboard KPIs (Power BI)
 
 - Monthly revenue trend (line chart)
-- Revenue by country (map visual)
+- Revenue by country (bar chart)
 - Top 10 products by revenue (bar chart)
 - Guest vs Registered customer split (donut chart)
 - Revenue by day of week (column chart)
-- Filters: Date range, Country, Customer type
+- Filters: Date range, Country, Customer type, Product description
 
 ---
 
@@ -103,15 +106,31 @@ sales-analytics-project/
 # 1. Clone this repository
 git clone https://github.com/YOUR_USERNAME/sales-analytics-project.git
 
-# 2. Install dependencies
+# 2. Download the dataset from UCI
+# https://archive.ics.uci.edu/dataset/352/online+retail
+# Save the file as: data/online_retail_raw.csv
+
+# 3. Install dependencies
 pip install pandas
 
-# 3. Run the cleaning script
+# 4. Run the cleaning script — produces cleaned CSV and cancellations CSV
 python python/clean_data.py
 
-# 4. Open queries.sql in any SQL client (SQLite, DBeaver, etc.)
+# 5. Open queries.sql in any SQL client (SQLite, DBeaver, DB Browser, etc.)
 
-# 5. Open powerbi/dashboard.pbix in Power BI Desktop
+# 6. Open powerbi/dashboard.pbix in Power BI Desktop
+```
+
+---
+
+## 📄 .gitignore
+
+The following large files are excluded from this repository:
+
+```
+data/online_retail_raw.csv
+data/online_retail_cleaned.csv
+data/online_retail_cancellations.csv
 ```
 
 ---
